@@ -22,10 +22,12 @@ public class UserServiceImpl implements UserService {
 
 
     public String signUp(String name, String email, String password, Response response) {
+        response.type("application/json");
+        response.status(200);
+
         UserModel user = UserDBHelper.getInstance().insert(name, email, password);
         if (user == null) {
             ErrorModel error = new ErrorModel("Bad Request");
-            response.type("application/json");
             response.status(400);
             return GsonLoader.toJson(error);
         }
@@ -35,6 +37,9 @@ public class UserServiceImpl implements UserService {
     }
 
     public String login(String email, String password, Response response) {
+        response.type("application/json");
+        response.status(200);
+
         UserModel user = UserDBHelper.getInstance().select(email, password);
         if (user == null) {
             ErrorModel error = new ErrorModel("Bad Request");
@@ -48,6 +53,9 @@ public class UserServiceImpl implements UserService {
     }
 
     public String genCode(int userId, Response response) {
+        response.type("application/json");
+        response.status(200);
+
         String code = generateCode();
         UserModel user = UserDBHelper.getInstance().update(userId, code, true);
         if (user == null) {
@@ -75,6 +83,9 @@ public class UserServiceImpl implements UserService {
     }
 
     public String matchUser(int userId, String code, Response response) {
+        response.type("application/json");
+        response.status(200);
+
         UserModel partner = UserDBHelper.getInstance().select(code);
         if (partner == null) {
             ErrorModel error = new ErrorModel("Bad Request");

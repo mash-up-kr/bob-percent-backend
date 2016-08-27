@@ -1,5 +1,6 @@
 package com.mashup.pig.bobpercent;
 
+import com.mashup.pig.bobpercent.controller.game.GameController;
 import com.mashup.pig.bobpercent.controller.user.UserController;
 
 /**
@@ -13,6 +14,7 @@ public class Application {
 
     private static void startControllers() {
         new UserController().start();
+        new GameController().start();
     }
 
 
