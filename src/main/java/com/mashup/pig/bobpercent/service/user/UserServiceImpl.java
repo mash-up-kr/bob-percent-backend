@@ -99,4 +99,19 @@ public class UserServiceImpl implements UserService {
         user.setPassword(null);
         return GsonLoader.toJson(user);
     }
+
+    public String getUser(int userId, Response response) {
+        response.type("application/json");
+        response.status(200);
+
+        UserModel user = UserDBHelper.getInstance().select(userId);
+        if (user == null) {
+            ErrorModel error = new ErrorModel("Bad Request");
+            response.type("application/json");
+            response.status(400);
+            return GsonLoader.toJson(error);
+        }
+
+        return GsonLoader.toJson(user);
+    }
 }

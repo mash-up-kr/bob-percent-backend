@@ -6,6 +6,7 @@ package com.mashup.pig.bobpercent.model;
 public class UserHistoryModel {
 
     private int userId;
+    private String code;
     private int foodCompId;
     private int foodId;
     private int gameId;

@@ -18,4 +18,7 @@ public interface UserService {
 
     String matchUser(int userId, String code, Response response);
 
+
+    String getUser(int userId, Response response);
+
 }
